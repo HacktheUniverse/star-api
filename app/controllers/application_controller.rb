@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
 
   def home
-    render text: 'hello'
   end
 
 end
