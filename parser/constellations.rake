@@ -14,8 +14,8 @@ namespace :parser  do
 
   namespace :milkyway do
     desc "Parser for stars.speck"
-    task stars: :environment do
-      spec_file = Rails.root.join "data", "milkyway", "specks", "stars.speck"
+    task constellations: :environment do
+      spec_file = Rails.root.join "data", "milkyway", "specks", "constellations.speck"
 
       comments = []
       metadata = {

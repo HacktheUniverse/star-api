@@ -7,6 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore data directory files we're not using 
+data/*
+
+# Ignore my notes files
+notes.txt
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
