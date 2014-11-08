@@ -1,0 +1,269 @@
+** API Examples
+
+*** Getting all the stars 
+
+The following query...
+
+#+BEGIN_SRC sh :results output code :exports both
+curl -X GET http://star-api.herokuapp.com/api/v1/stars
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T07:30:49.614Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 1, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T07:30:49.614Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+   ...
+]
+#+END_SRC
+
+...would get you a list of all the stars in =JSON=.
+
+*** Get a single star by label
+
+It is also possible to query the stars by label, here is an example of querying for the star labeled as Sun.
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/stars/Sun
+#+END_SRC
+
+Result:
+
+#+RESULTS:
+#+BEGIN_SRC sh
+{
+    "absmag": 4.85, 
+    "appmag": -26.72, 
+    "colorb_v": 0.65, 
+    "created_at": "2014-11-08T07:30:49.614Z", 
+    "dcalc": 0.0, 
+    "distly": 0.0, 
+    "hipnum": 0.0, 
+    "id": 1, 
+    "label": "Sun", 
+    "lum": 0.8913, 
+    "plx": 0.0, 
+    "plxerr": 0.0, 
+    "speed": 0.0, 
+    "texnum": 1.0, 
+    "updated_at": "2014-11-08T07:30:49.614Z", 
+    "vx": 0.0, 
+    "vy": 0.0, 
+    "vz": 0.0, 
+    "x": 0.0, 
+    "y": 0.0, 
+    "z": 0.0
+}
+#+END_SRC
+
+Here is another example of getting the HIP1 HD224700 Gli star:
+
+#+BEGIN_SRC sh :results output code :exports both
+curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli | python -m json.tool
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+{
+    "absmag": 1.85, 
+    "appmag": 9.1, 
+    "colorb_v": 0.396, 
+    "created_at": "2014-11-08T07:30:49.623Z", 
+    "dcalc": 1.0, 
+    "distly": 920.9, 
+    "hipnum": 1.0, 
+    "id": 2, 
+    "label": "HIP1 HD224700 Gli", 
+    "lum": 14.19036, 
+    "plx": 3.54, 
+    "plxerr": 39.27, 
+    "speed": 0.0, 
+    "texnum": 1.0, 
+    "updated_at": "2014-11-08T07:30:49.623Z", 
+    "vx": 0.0, 
+    "vy": 0.0, 
+    "vz": 0.0, 
+    "x": -18.1007, 
+    "y": 143.562, 
+    "z": -242.612
+}
+#+END_SRC
+
+*** Get all exoplanets
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/exo_planets
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+[
+    {
+        "created_at": "2014-11-08T15:08:27.390Z", 
+        "distance": 360.6, 
+        "id": 1, 
+        "label": "11 Com", 
+        "numplanets": 1, 
+        "texture": 1, 
+        "updated_at": "2014-11-08T15:08:27.390Z", 
+        "x": -2.2931, 
+        "y": -22.3478, 
+        "z": 108.2944
+    }, 
+    {
+        "created_at": "2014-11-08T15:08:27.414Z", 
+        "distance": 389.5, 
+        "id": 2, 
+        "label": "11 UMi", 
+        "numplanets": 1, 
+        "texture": 1, 
+        "updated_at": "2014-11-08T15:08:27.414Z", 
+        "x": -28.918, 
+        "y": 85.3411, 
+        "z": 78.4522
+    },
+  ...
+]
+#+END_SRC
+
+*** Get all local groups of galaxies 
+
+For the Milky Way Atlas :)
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/local_groups
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+[
+    {
+        "created_at": "2014-11-08T15:07:57.275Z", 
+        "distly": "3.400e+06", 
+        "id": 1, 
+        "label": "WLM", 
+        "updated_at": "2014-11-08T15:07:57.275Z", 
+        "x": 71746.888, 
+        "y": 284986.3354, 
+        "z": -1000684.2648
+    }, 
+    {
+        "created_at": "2014-11-08T15:07:57.300Z", 
+        "distly": "4.200e+06", 
+        "id": 2, 
+        "label": "IC 10", 
+        "updated_at": "2014-11-08T15:07:57.300Z", 
+        "x": -623009.4693, 
+        "y": 1125201.3616, 
+        "z": -74901.4093
+    },
+   ...
+]
+#+END_SRC
+
+*** Get all open star clusters
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/open_cluster
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC sh
+[
+    {
+        "created_at": "2014-11-08T15:08:51.495Z", 
+        "diam": 5.0, 
+        "distly": 12110.9, 
+        "id": 1, 
+        "label": "Berkeley 58", 
+        "logage": 8.4, 
+        "metal": 0.0, 
+        "updated_at": "2014-11-08T15:08:51.495Z", 
+        "x": -1671.8894, 
+        "y": 3316.4782, 
+        "z": -83.5639
+    }, 
+    {
+        "created_at": "2014-11-08T15:08:51.545Z", 
+        "diam": 10.0, 
+        "distly": 3260.0, 
+        "id": 2, 
+        "label": "Berkeley 59", 
+        "logage": 6.8, 
+        "metal": 0.0, 
+        "updated_at": "2014-11-08T15:08:51.545Z", 
+        "x": -471.0771, 
+        "y": 877.7825, 
+        "z": 87.0879
+    },
+  ...
+] 
+#+END_SRC
+
+*** Search for a star
+
+Searching is also available to get stars that match a query. Here is an example:
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/search?q="Sun" | python -m json.tool
+#+END_SRC
+
+The response should match at least the Sun:
+
+#+RESULTS:
+#+BEGIN_SRC sh
+[
+    [
+        {
+            "absmag": 4.85, 
+            "appmag": -26.72, 
+            "colorb_v": 0.65, 
+            "created_at": "2014-11-08T14:49:09.334Z", 
+            "dcalc": 0.0, 
+            "distly": 0.0, 
+            "hipnum": 0.0, 
+            "id": 53794, 
+            "label": "Sun", 
+            "lum": 0.8913, 
+            "plx": 0.0, 
+            "plxerr": 0.0, 
+            "speed": 0.0, 
+            "texnum": 1.0, 
+            "updated_at": "2014-11-08T14:49:09.334Z", 
+            "vx": 0.0, 
+            "vy": 0.0, 
+            "vz": 0.0, 
+            "x": 0.0, 
+            "y": 0.0, 
+            "z": 0.0
+        }
+    ], 
+    [], 
+    [], 
+    [], 
+    []
+]
+#+END_SRC
+
+

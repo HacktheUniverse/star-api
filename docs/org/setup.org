@@ -127,7 +127,7 @@ relative_permalinks: true
 title:            Star API documentation
 tagline:          'All These Stars Are Yours'
 description:      'API to access the Digital Universe Data set'
-baseurl:          /
+baseurl:          /star-api/
 
 author:
   name:           'Nancy, Jose, Zak, Waldemar, Nichol, and Suren'

@@ -16,14 +16,14 @@
   </title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/star-api/public/css/poole.css">
+  <link rel="stylesheet" href="/star-api/public/css/syntax.css">
+  <link rel="stylesheet" href="/star-api/public/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
   <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
-                                 <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/star-api/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/star-api/public/favicon.ico">
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -36,7 +36,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h2>
-        <a href="/">
+        <a href="/star-api/">
           Star API documentation
         </a>
       </h2>
@@ -44,7 +44,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="sidebar-nav-item active" href="/">Home</a>
+      <a class="sidebar-nav-item" href="http://star-api.herokuapp.com">Home</a>
 
       
       
@@ -67,8 +67,10 @@
       
 <h2>API Examples</h2>
 <h3>Getting all the stars</h3>
-<div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars <span class="p">|</span> python -m json.tool <span class="p">|</span> head -n 24
+<p>The following query&#8230;</p>
+<div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars
 </pre></div>
+<p>&#8230;would get you a list of all the stars in <code>JSON</code>.</p>
 <div class="highlight"><pre><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">&quot;absmag&quot;</span>: 4.85, 
@@ -94,9 +96,11 @@
         <span class="s2">&quot;z&quot;</span>: 0.0
     <span class="o">}</span>, 
 </pre></div>
-<h3>Get a single star (like the Sun)</h3>
-<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/stars/Sun <span class="p">|</span> python -m json.tool <span class="p">|</span> head -n 30
+<h3>Get a single star by label</h3>
+<p>It is also possible to query the stars by label, here is an example of querying for the star labeled as Sun.</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/stars/Sun
 </pre></div>
+<p>Result:</p>
 <div class="highlight"><pre><span class="o">{</span>
     <span class="s2">&quot;absmag&quot;</span>: 4.85, 
     <span class="s2">&quot;appmag&quot;</span>: -26.72, 
@@ -121,7 +125,7 @@
     <span class="s2">&quot;z&quot;</span>: 0.0
 <span class="o">}</span>
 </pre></div>
-<h3>Get a specific star</h3>
+<p>Here is another example of getting the HIP1 HD224700 Gli star:</p>
 <div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli <span class="p">|</span> python -m json.tool
 </pre></div>
 <div class="highlight"><pre><span class="o">{</span>
@@ -147,6 +151,135 @@
     <span class="s2">&quot;y&quot;</span>: 143.562, 
     <span class="s2">&quot;z&quot;</span>: -242.612
 <span class="o">}</span>
+</pre></div>
+<h3>Get all exoplanets</h3>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/exo_planets
+</pre></div>
+<div class="highlight"><pre><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:27.390Z&quot;</span>, 
+        <span class="s2">&quot;distance&quot;</span>: 360.6, 
+        <span class="s2">&quot;id&quot;</span>: 1, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;11 Com&quot;</span>, 
+        <span class="s2">&quot;numplanets&quot;</span>: 1, 
+        <span class="s2">&quot;texture&quot;</span>: 1, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:27.390Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: -2.2931, 
+        <span class="s2">&quot;y&quot;</span>: -22.3478, 
+        <span class="s2">&quot;z&quot;</span>: 108.2944
+    <span class="o">}</span>, 
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:27.414Z&quot;</span>, 
+        <span class="s2">&quot;distance&quot;</span>: 389.5, 
+        <span class="s2">&quot;id&quot;</span>: 2, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;11 UMi&quot;</span>, 
+        <span class="s2">&quot;numplanets&quot;</span>: 1, 
+        <span class="s2">&quot;texture&quot;</span>: 1, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:27.414Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: -28.918, 
+        <span class="s2">&quot;y&quot;</span>: 85.3411, 
+        <span class="s2">&quot;z&quot;</span>: 78.4522
+    <span class="o">}</span>,
+  ...
+<span class="o">]</span>
+</pre></div>
+<h3>Get all local groups of galaxies</h3>
+<p>For the Milky Way Atlas :)</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/local_groups
+</pre></div>
+<div class="highlight"><pre><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:07:57.275Z&quot;</span>, 
+        <span class="s2">&quot;distly&quot;</span>: <span class="s2">&quot;3.400e+06&quot;</span>, 
+        <span class="s2">&quot;id&quot;</span>: 1, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;WLM&quot;</span>, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:07:57.275Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: 71746.888, 
+        <span class="s2">&quot;y&quot;</span>: 284986.3354, 
+        <span class="s2">&quot;z&quot;</span>: -1000684.2648
+    <span class="o">}</span>, 
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:07:57.300Z&quot;</span>, 
+        <span class="s2">&quot;distly&quot;</span>: <span class="s2">&quot;4.200e+06&quot;</span>, 
+        <span class="s2">&quot;id&quot;</span>: 2, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;IC 10&quot;</span>, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:07:57.300Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: -623009.4693, 
+        <span class="s2">&quot;y&quot;</span>: 1125201.3616, 
+        <span class="s2">&quot;z&quot;</span>: -74901.4093
+    <span class="o">}</span>,
+   ...
+<span class="o">]</span>
+</pre></div>
+<h3>Get all open star clusters</h3>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/open_cluster
+</pre></div>
+<div class="highlight"><pre><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:51.495Z&quot;</span>, 
+        <span class="s2">&quot;diam&quot;</span>: 5.0, 
+        <span class="s2">&quot;distly&quot;</span>: 12110.9, 
+        <span class="s2">&quot;id&quot;</span>: 1, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;Berkeley 58&quot;</span>, 
+        <span class="s2">&quot;logage&quot;</span>: 8.4, 
+        <span class="s2">&quot;metal&quot;</span>: 0.0, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:51.495Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: -1671.8894, 
+        <span class="s2">&quot;y&quot;</span>: 3316.4782, 
+        <span class="s2">&quot;z&quot;</span>: -83.5639
+    <span class="o">}</span>, 
+    <span class="o">{</span>
+        <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:51.545Z&quot;</span>, 
+        <span class="s2">&quot;diam&quot;</span>: 10.0, 
+        <span class="s2">&quot;distly&quot;</span>: 3260.0, 
+        <span class="s2">&quot;id&quot;</span>: 2, 
+        <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;Berkeley 59&quot;</span>, 
+        <span class="s2">&quot;logage&quot;</span>: 6.8, 
+        <span class="s2">&quot;metal&quot;</span>: 0.0, 
+        <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T15:08:51.545Z&quot;</span>, 
+        <span class="s2">&quot;x&quot;</span>: -471.0771, 
+        <span class="s2">&quot;y&quot;</span>: 877.7825, 
+        <span class="s2">&quot;z&quot;</span>: 87.0879
+    <span class="o">}</span>,
+  ...
+<span class="o">]</span> 
+</pre></div>
+<h3>Search for a star</h3>
+<p>Searching is also available to get stars that match a query. Here is an example:</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/search?q<span class="o">=</span><span class="s2">&quot;Sun&quot;</span> <span class="p">|</span> python -m json.tool
+</pre></div>
+<p>The response should match at least the Sun:</p>
+<div class="highlight"><pre><span class="o">[</span>
+    <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;absmag&quot;</span>: 4.85, 
+            <span class="s2">&quot;appmag&quot;</span>: -26.72, 
+            <span class="s2">&quot;colorb_v&quot;</span>: 0.65, 
+            <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T14:49:09.334Z&quot;</span>, 
+            <span class="s2">&quot;dcalc&quot;</span>: 0.0, 
+            <span class="s2">&quot;distly&quot;</span>: 0.0, 
+            <span class="s2">&quot;hipnum&quot;</span>: 0.0, 
+            <span class="s2">&quot;id&quot;</span>: 53794, 
+            <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;Sun&quot;</span>, 
+            <span class="s2">&quot;lum&quot;</span>: 0.8913, 
+            <span class="s2">&quot;plx&quot;</span>: 0.0, 
+            <span class="s2">&quot;plxerr&quot;</span>: 0.0, 
+            <span class="s2">&quot;speed&quot;</span>: 0.0, 
+            <span class="s2">&quot;texnum&quot;</span>: 1.0, 
+            <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T14:49:09.334Z&quot;</span>, 
+            <span class="s2">&quot;vx&quot;</span>: 0.0, 
+            <span class="s2">&quot;vy&quot;</span>: 0.0, 
+            <span class="s2">&quot;vz&quot;</span>: 0.0, 
+            <span class="s2">&quot;x&quot;</span>: 0.0, 
+            <span class="s2">&quot;y&quot;</span>: 0.0, 
+            <span class="s2">&quot;z&quot;</span>: 0.0
+        <span class="o">}</span>
+    <span class="o">]</span>, 
+    <span class="o">[]</span>, 
+    <span class="o">[]</span>, 
+    <span class="o">[]</span>, 
+    <span class="o">[]</span>
+<span class="o">]</span>
 </pre></div>
 
 
