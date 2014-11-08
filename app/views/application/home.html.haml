@@ -1,23 +1,37 @@
-%h1
-  All These Stars Are Yours
+.background
 
-%p
-  This is an API to access the Digital Universe Data set.  Current
-  data provided includes:
-  %ul
-    %li Stars (1000 - More to come soon...)
+.container
+  
+  .center
+    %h1
+      All These Stars Are Yours
 
-%p
-  access via:
-  %ul
-    %li star-api.herokuapp.com/api/v1/stars
-    %li star-api.herokuapp.com/api/v1/stars/Sun
-    %li star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli
+  %p
+    This is an API to access the Digital Universe Data set as maintained by the American Museum of Natural History.  This was produced during the Hack The Universe Hackathon - The Best Hackathon In Ever.  
+  
+  %p 
+    Current data provided includes:
+    %ul
+      %li Stars (1000 - More to come soon...)
 
-%p
-  We are currently working on sorting the star data by parameters (ex. distance
-  from sun), pagination for stars, exoplanets, and constellations.
+  %p
+    Access via:
+    %ul
+      %li #{link_to 'http://star-api.herokuapp.com/api/v1/stars', 'http://star-api.herokuapp.com/api/v1/stars'}
+      %li #{link_to 'http://star-api.herokuapp.com/api/v1/stars/Sun', 'http://star-api.herokuapp.com/api/v1/stars/Sun'}
+      %li #{link_to 'http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli', 'http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli'}
 
-%p
-  Team includes: Nancy, Jose, Zak, Waldemar, Nichol, and Suren
+  %p
+    We are currently working on sorting the star data by parameters (ex. distance
+    from sun), pagination for stars, exoplanets, and constellations.
 
+  .team
+
+    %p
+      The Team:
+      #{link_to 'Nancy', 'https://github.com/NancyKo'},
+      #{link_to 'Jose', 'https://github.com/jdmcpeek'},
+      #{link_to 'Zak', 'https://github.com/zniazi'}, 
+      #{link_to 'Waldemar', 'https://github.com/wallyqs'}, 
+      #{link_to 'Nichol', 'https://github.com/nicholalexander'}, 
+      #{link_to 'Suren', 'https://github.com/surenm'}
