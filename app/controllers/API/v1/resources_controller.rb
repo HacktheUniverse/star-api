@@ -6,8 +6,8 @@ module API
       respond_to :json
 
       def index
-        @items = @resource_class.first(1000)
-        render :json => {resource: resource, resource =>  @items}
+        items = @resource_class.all
+        paginate json: items, per_page: 1000
       end
 
       def show
