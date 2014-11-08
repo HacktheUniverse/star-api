@@ -23,8 +23,8 @@ module API
       def search
         query = params[:q]
         models = [Star, ExoPlanet, LocalGroup, OpenCluster, Constellation]
-        search_response = models.map {|m| m.search(query) }
-        paginate :json => search_response, per_page: 500
+        search_response = Hash[models.map {|m| [m.table_name, m.search(query)]}]
+        render :json => search_response
       end
 
       private
