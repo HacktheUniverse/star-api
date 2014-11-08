@@ -1,14 +1,19 @@
 ---
 ---
-#+layout: default
+#+layout:   default
+#+startup:  showeverything
 
 ** API Examples
 
 *** Getting all the stars 
 
+The following query...
+
 #+BEGIN_SRC sh :results output code :exports both
-curl -X GET http://star-api.herokuapp.com/api/v1/stars | python -m json.tool | head -n 24
+curl http://star-api.herokuapp.com/api/v1/stars
 #+END_SRC
+
+...would get you a list of all the stars in ~JSON~.
 
 #+RESULTS:
 #+BEGIN_SRC sh
@@ -35,14 +40,21 @@ curl -X GET http://star-api.herokuapp.com/api/v1/stars | python -m json.tool | h
         "x": 0.0, 
         "y": 0.0, 
         "z": 0.0
-    }, 
+    },
+  ...
+}
 #+END_SRC
 
-*** Get a single star (like the Sun)
+*** Get a single star by label
+
+It is also possible to query the stars by label,
+here is an example of querying for the star labeled as Sun.
 
 #+BEGIN_SRC sh :results output code :exports both
-curl http://star-api.herokuapp.com/api/v1/stars/Sun | python -m json.tool | head -n 30
+curl http://star-api.herokuapp.com/api/v1/stars/Sun
 #+END_SRC
+
+Result:
 
 #+RESULTS:
 #+BEGIN_SRC sh
@@ -71,10 +83,10 @@ curl http://star-api.herokuapp.com/api/v1/stars/Sun | python -m json.tool | head
 }
 #+END_SRC
 
-*** Get a specific star
+And here is another example of getting the =HIP1 HD224700 Gli= star.
 
 #+BEGIN_SRC sh :results output code :exports both
-curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli | python -m json.tool
+curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli
 #+END_SRC
 
 #+RESULTS:
@@ -101,6 +113,44 @@ curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli | p
     "x": -18.1007, 
     "y": 143.562, 
     "z": -242.612
+}
+#+END_SRC
+
+*** Search for a star
+
+Searching is also available to get stars that match a query.
+Here is an example:
+
+#+BEGIN_SRC sh :results output code :exports both
+curl http://star-api.herokuapp.com/api/v1/search?q="Sun"
+#+END_SRC
+
+The response should match the Sun:
+
+#+RESULTS:
+#+BEGIN_SRC sh
+{
+    "absmag": 4.85, 
+    "appmag": -26.72, 
+    "colorb_v": 0.65, 
+    "created_at": "2014-11-08T07:30:49.614Z", 
+    "dcalc": 0.0, 
+    "distly": 0.0, 
+    "hipnum": 0.0, 
+    "id": 1, 
+    "label": "Sun", 
+    "lum": 0.8913, 
+    "plx": 0.0, 
+    "plxerr": 0.0, 
+    "speed": 0.0, 
+    "texnum": 1.0, 
+    "updated_at": "2014-11-08T07:30:49.614Z", 
+    "vx": 0.0, 
+    "vy": 0.0, 
+    "vz": 0.0, 
+    "x": 0.0, 
+    "y": 0.0, 
+    "z": 0.0
 }
 #+END_SRC
 
