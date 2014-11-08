@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108102320) do
+ActiveRecord::Schema.define(version: 20141108155302) do
 
   create_table "constellations", force: true do |t|
     t.string "name"
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 20141108102320) do
     t.float    "distly"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "quasars", force: true do |t|
+    t.float   "x"
+    t.float   "y"
+    t.float   "z"
+    t.float   "Rmag"
+    t.float   "redshift"
+    t.float   "Tlookback"
+    t.float   "distMpc"
+    t.float   "distMly"
+    t.float   "radeg"
+    t.float   "decdeg"
+    t.integer "release"
   end
 
   create_table "stars", force: true do |t|

@@ -1,5 +1,8 @@
+require 'pp'
+require 'byebug'
+require 'net/http'
+
 namespace :parser do
-  
 
   def comment?(line)
     line.start_with? "#"
@@ -15,7 +18,7 @@ namespace :parser do
 
 
 	namespace :extragalactic do 
-		task :quasar, :environment do 
+		task sdssgals: :environment do 
 			spec_uri = "/users/abbott/dudata/extragalactic/specks/sdssgals.speck"
 	      	label_uri = "/users/abbott/dudata/extragalactic/specks/sdssgals.label"
 			spec_file = Tempfile.new('speck')
@@ -32,11 +35,11 @@ namespace :parser do
     			columns: ["x", "y", "z"]
   			}
 
-	      	IO::readlines(spec_file).each_slice(1000) do |lines|
+	      	IO::readlines(spec_file)[0..1000].each_slice(1000) do |lines|
 	      		
 	      		items = []
 	      		lines.each do |line|
-		      		if line.empty? 
+		      		if line.empty? || line.strip.empty?
 		      			next
 		      		elsif comment?(line)
 		      			comments.push(line)
@@ -49,15 +52,17 @@ namespace :parser do
 			          	end
 			        else
 			          item = {}
-			          # binding.pry	
-		              item_tokens = line.split(" ")
+		              item_tokens = line.split(" ")	
+		              next if item_tokens.empty?
 		              item_tokens.each_with_index do |token, index|
 		                item[metadata[:columns][index.to_i]] = token
 		              end
-		              items.push item
-		          	end
+		              items.push item	
+		              # binding.pry
+		              # pp item
+		          	end		          	
 	      		end
-		  		pp items
+		              Quasar.create! items
 		    end
 		end
 	end
