@@ -1,4 +1,4 @@
-Star-api
+Star-API
 ========
 The API has the following components
 
