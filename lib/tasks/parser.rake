@@ -21,35 +21,35 @@ namespace :parser  do
       metadata = {
         columns: ["label", "x", "y", "z"]
       }
-      stars = []
+      
 
-      IO::readlines(spec_file).each do |line|
-        if comment?(line)
-          comments.push(line)
-        elsif metadata?(line)
-          key, value = get_metadata_value(line)
-          if key == "datavar"
-            metadata[:columns].push(value)
+      IO::readlines(spec_file).each_slice(1000) do |lines|
+        stars = []
+        lines.each do |line|
+          if comment?(line)
+            comments.push(line)
+          elsif metadata?(line)
+            key, value = get_metadata_value(line)
+            if key == "datavar"
+              metadata[:columns].push(value)
+            else
+              metadata[key] = value
+            end
           else
-            metadata[key] = value
-          end
-        else
-          star = {}
-          tokens = line.split("#")
-          star[:label] = tokens[1].chomp.strip
+            star = {}
+            tokens = line.split("#")
+            star[:label] = tokens[1].chomp.strip
 
-          star_tokens = tokens[0].split(" ")
-          star_tokens.each_with_index do |token, index|
-            #TODO: make this float and int if its a number
-            star[metadata[:columns][index.to_i + 1]] = token
-          end
+            star_tokens = tokens[0].split(" ")
+            star_tokens.each_with_index do |token, index|
+              #TODO: make this float and int if its a number
+              star[metadata[:columns][index.to_i + 1]] = token
+            end
 
-          stars.push star
+            stars.push star
+          end
+          Star.create! stars
         end
-      end
-
-      stars.each_slice(500) do |subset|
-        Star.create! subset
       end
     end
   end
