@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  namespace :api, :defaults => {:format => :json}, :path => "", :constraints => {:subdomain => "api"} do
+  
+  root 'application#home'
+
+  namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-      root 'welcome#index'
 
       resources :stars
       
