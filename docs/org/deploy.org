@@ -1,0 +1,6 @@
+#+TITLE: Deploy to Github pages
+
+#+name: push-to-gh-pages
+#+BEGIN_SRC sh :dir site
+git push origin gh-pages
+#+END_SRC
