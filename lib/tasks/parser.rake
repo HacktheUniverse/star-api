@@ -21,7 +21,6 @@ namespace :parser  do
       metadata = {
         columns: ["label", "x", "y", "z"]
       }
-      
 
       IO::readlines(spec_file).each_slice(1000) do |lines|
         stars = []
@@ -45,11 +44,10 @@ namespace :parser  do
               #TODO: make this float and int if its a number
               star[metadata[:columns][index.to_i + 1]] = token
             end
-
             stars.push star
           end
-          Star.create! stars
         end
+        Star.create! stars
       end
     end
   end
