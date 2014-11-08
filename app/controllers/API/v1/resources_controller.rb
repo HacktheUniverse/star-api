@@ -7,18 +7,18 @@ module API
 
       def index
         items = @resource_class.all
-        paginate json: items, per_page: 50
+        paginate json: items, per_page: 500
       end
 
       def show
-        paginate :json => @item, per_page: 50
+        paginate :json => @item, per_page: 500
       end
 
       def search
         query = params[:q]
         models = [Star, ExoPlanet, LocalGroup, OpenCluster, Constellation]
         search_response = models.map {|m| m.search(query) }
-        paginate :json => search_response, per_page: 50  
+        paginate :json => search_response, per_page: 500 
       end
 
       private
