@@ -58,8 +58,6 @@ namespace :parser do
 		                item[metadata[:columns][index.to_i]] = token
 		              end
 		              items.push item	
-		              # binding.pry
-		              # pp item
 		          	end		          	
 	      		end
 		              Quasar.create! items

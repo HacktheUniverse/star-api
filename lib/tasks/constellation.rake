@@ -65,14 +65,22 @@ namespace :parser  do
       end
       pp galaxies
       
+      puts "Galaxies Hash: #{galaxies}"
       galaxies.keys.each do |galaxy_name|
         galaxies[galaxy_name].keys.each do |constellation_name|
           constellation = Constellation.new
           constellation.name = constellation_name
           constellation.galaxy = galaxy_name
-          stars = galaxies[galaxy_name][constellation_name].map { |star_name| Star.where("label LIKE ?", "#{star_name} ") }
-          puts "Stars is #{stars.to_a}"
-          constellation.stars = stars
+          stars = []
+          galaxies[galaxy_name][constellation_name].each do |star_name|
+            label = star_name.split(":").join
+            puts "Label: #{label}"
+            star = Star.where("label LIKE ?", "#{label} %").first || Star.where("label LIKE ?", "#{label.upcase} %").first 
+            puts "Star: #{star}"
+            stars << star
+          end
+          constellation.stars = stars.uniq
+          constellation.save!
         end
       end
     end
