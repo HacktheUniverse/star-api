@@ -113,10 +113,14 @@ namespace :parser do
               metadata[key] = value
             end
           else
+            tokens = line.split("#")
             item = {}
-              item_tokens = line.split(" ")
+            if tokens[1].present?
+              item[:label] = tokens[1].chomp.strip
+              item_tokens = tokens[0].split(" ")
               item_tokens.each_with_index do |token, index|
-                item[metadata[:columns][index.to_i]] = token
+              
+                item[metadata[:columns][index.to_i + 1]] = token
               end
               items.push item
             end
