@@ -1,0 +1,27 @@
+
+<p>&#8212;
+  layout: null
+  &#8212;</p>
+<p>&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;
+  &lt;feed xmlns=&#8221;http://www.w3.org/2005/Atom&#8221;&gt;</p>
+<p>&lt;title&gt;{{ site.title }}&lt;/title&gt;
+  &lt;link href=&#8221;{{ site.url }}/atom.xml&#8221; rel=&#8221;self&#8221;<i>&gt;
+  &lt;link href=&#8221;{{ site.url }}</i>&#8221;/&gt;
+  &lt;updated&gt;{{ site.time | date_to_xmlschema }}&lt;/updated&gt;
+  &lt;id&gt;{{ site.url }}&lt;/id&gt;
+  &lt;author&gt;
+  &lt;name&gt;{{ site.author.name }}&lt;/name&gt;
+  &lt;email&gt;{{ site.author.email }}&lt;/email&gt;
+  &lt;/author&gt;</p>
+<p>{% for post in site.posts %}
+  &lt;entry&gt;
+  &lt;title&gt;{{ post.title }}&lt;/title&gt;
+  &lt;link href=&#8221;{{ site.url }}{{ post.url }}&#8221;/&gt;
+  &lt;updated&gt;{{ post.date | date_to_xmlschema }}&lt;/updated&gt;
+  &lt;id&gt;{{ site.url }}{{ post.id }}&lt;/id&gt;
+  &lt;content type=&#8221;html&#8221;&gt;{{ post.content | xml_escape }}&lt;/content&gt;
+  &lt;/entry&gt;
+  {% endfor %}</p>
+<p>&lt;/feed&gt;</p>
+
+
