@@ -1,0 +1,6 @@
+#+title: Development environment
+
+#+name: build-site
+#+BEGIN_SRC sh :dir src
+bundle exec jekyll server -d ../site/
+#+END_SRC
