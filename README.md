@@ -2,13 +2,13 @@ star-api
 ========
 The API has the following components
 
-=== Dependencies ===
+## Dependencies
 
 1. Rvm, ruby, bundler
 2. Sqlite on development and postgresql on production
 3. Elastichsearch to store search metadata
  
-=== The rails API ===
+## The rails API ===
 
 You need to clone repo, run 
 ```
