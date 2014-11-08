@@ -75,7 +75,7 @@ namespace :parser  do
           galaxies[galaxy_name][constellation_name].each do |star_name|
             label = star_name.split(":").join
             puts "Label: #{label}"
-            star = Star.where("label LIKE ?", "#{label} %").first || ("label LIKE ?", "#{label.upcase} %").first 
+            star = Star.where("label LIKE ?", "#{label} %").first || Star.where("label LIKE ?", "#{label.upcase} %").first 
             puts "Star: #{star}"
             stars << star
           end
