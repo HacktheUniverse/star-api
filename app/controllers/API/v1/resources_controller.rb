@@ -18,7 +18,7 @@ module API
       end
 
       def show
-        :json => @item
+        render :json => @item
       end
 
       def search
