@@ -2,7 +2,8 @@ star-api
 ========
 The API has the following components
 
-=== Dependencies:
+=== Dependencies
+
 1. Rvm, ruby, bundler
 2. Sqlite on development and postgresql on production
 3. Elastichsearch to store search metadata
@@ -22,6 +23,7 @@ The ```rake search:rebuild``` builds search index for all these data sets.
 
 
 === Features
+
 1. Available resources as REST get api: stars, exo_planets, local_groups, open clusters, constellations
 2. Paginated queries
 3. Search endpoint at ```/api/v1/search?q=<search query>``` to search for all available names and labels
