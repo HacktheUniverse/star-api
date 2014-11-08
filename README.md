@@ -2,7 +2,7 @@ Star-API
 ========
 
 ## Category: Toolkit
-## Presentation URL: [Presentation](https://speakerdeck.com/surenm/building-rest-api-for-digital-universe)
+## Presentation URL: [Presentation](https://speakerdeck.com/surenm/building-rest-api-for-digital-universe-1)
 ### API Endpoint: [API](https://star-api.herokuapp.com) 
 
 
