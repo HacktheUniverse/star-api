@@ -23,7 +23,7 @@ namespace :parser  do
       }
       stars = []
 
-      IO::readlines(spec_file).first(1000).each do |line|
+      IO::readlines(spec_file).each do |line|
         if comment?(line)
           comments.push(line)
         elsif metadata?(line)
