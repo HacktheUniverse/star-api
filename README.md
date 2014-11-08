@@ -44,9 +44,9 @@ The ```rake search:rebuild``` builds search index for all these data sets.
 6.  To see only the weighted mean stars: 
 [http://star-api.herokuapp.com/api/v1/stars?dcalc=2](http://star-api.herokuapp.com/api/v1/stars?dcalc=2)
 7. To see all the intrinsically bright stars:
-[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3)
-8. To see all the intrinsically fain stars: 
-[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=0&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-10)
+[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=-10&max[absmag]=-3)
+8. To see all the intrinsically faint stars: 
+[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=0&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=0&max[absmag]=10)
 9. To see all stars within 100 light-years:
 [http://star-api.herokuapp.com/api/v1/stars?max[distly]=100](http://star-api.herokuapp.com/api/v1/stars?max[distly]=100)
 9. To see all stars within 500 light-years:
