@@ -1,8 +1,8 @@
 Star-API
 ========
 
-#Category: Toolkit
-#Presentation URL: (Presentation)[https://speakerdeck.com/surenm/building-rest-api-for-digital-universe]
+## Category: Toolkit
+## URL: [Presentation](https://speakerdeck.com/surenm/building-rest-api-for-digital-universe)
 
 
 ## Dependencies
