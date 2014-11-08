@@ -1,6 +1,5 @@
 Star-API
 ========
-The API has the following components
 
 ## Dependencies
 
