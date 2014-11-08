@@ -1,4 +1,5 @@
 require 'pp'
+
 namespace :parser  do
   def comment?(line)
     line.start_with? "#"
