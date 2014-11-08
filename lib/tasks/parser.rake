@@ -21,7 +21,7 @@ namespace :parser  do
       metadata = {
         columns: ["label", "x", "y", "z"]
       }
-      stars = {}
+      stars = []
 
       IO::readlines(spec_file).first(1000).each do |line|
         if comment?(line)
@@ -44,10 +44,13 @@ namespace :parser  do
             star[metadata[:columns][index.to_i + 1]] = token
           end
 
-          stars[star[:label]] = star
+          stars.push star
         end
       end
-      Rails.cache.write(:stars, stars)
+
+      stars.each_slice(500) do |subset|
+        Star.create! subset
+      end
     end
   end
 end

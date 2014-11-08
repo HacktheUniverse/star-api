@@ -5,6 +5,7 @@ class CreateStarsTable < ActiveRecord::Migration
       t.float :x
       t.float :y
       t.float :z
+      t.float :lum
       t.float :colorb_v
       t.float :absmag
       t.float :appmag
