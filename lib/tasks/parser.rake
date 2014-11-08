@@ -1,5 +1,7 @@
 require 'pp'
 require 'byebug'
+require 'net/http'
+
 namespace :parser do
   def comment?(line)
     line.start_with? "#"
