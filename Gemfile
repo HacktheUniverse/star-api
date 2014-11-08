@@ -35,3 +35,7 @@ gem 'haml-rails'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'pry-byebug'
+
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
