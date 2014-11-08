@@ -13,8 +13,7 @@ module API
           end
         end
 
-        items = @resource_class.all
-        paginate json: items, per_page: 500
+        paginate json: @items, per_page: 500
       end
 
       def show
