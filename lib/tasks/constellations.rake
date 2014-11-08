@@ -55,7 +55,7 @@ namespace :parser  do
           constellation = Constellation.new
           constellation.name = constellation_name
           constellation.galaxy = galaxy_name
-          stars = galaxies[galaxy_name][constellation_name].map { |star_name| Star.where(name: star_name) }
+          stars = galaxies[galaxy_name][constellation_name].map { |star_name| Star.find_by(label: star_name) }
           constellation.stars = stars
         end
       end
