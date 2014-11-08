@@ -40,7 +40,7 @@ module API
 
       def max_filters
         params[:max] = [] if params[:max].blank?
-        params[:max].select {|key, value| @resource_class.column_names.include? key.to_s } if params[:max]
+        params[:max].select {|key, value| @resource_class.column_names.include? key.to_s }
       end
 
       def min_filters
