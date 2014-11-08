@@ -65,22 +65,23 @@ namespace :parser  do
       end
       # pp galaxies
       
-      galaxies.keys.each do |galaxy_name|
-        galaxies[galaxy_name].keys.each do |constellation_name|
-          constellation = Constellation.new
-          constellation.name = constellation_name
-          constellation.galaxy = galaxy_name
-          stars = []
-          galaxies[galaxy_name][constellation_name].each do |star_name|
-            label = star_name.split(":").join
-            puts label
-            star = Star.where("label LIKE ?", "#{label} %").first
-            stars << star
-          end
-          constellation.stars = stars.uniq
-          constellation.save!
-        end
-      end
+      # galaxies.keys.each do |galaxy_name|
+      #   galaxies[galaxy_name].keys.each do |constellation_name|
+      #     constellation = Constellation.new
+      #     constellation.name = constellation_name
+      #     constellation.galaxy = galaxy_name
+      #     stars = []
+      #     galaxies[galaxy_name][constellation_name].each do |star_name|
+      #       label = star_name.split(":").join
+      #       puts label
+      #       star = Star.where("label LIKE ?", "#{label} %").first
+      #       puts star
+      #       stars << star
+      #     end
+      #     constellation.stars = stars.uniq
+      #     constellation.save!
+      #   end
+      # end
     end
   end
 end
