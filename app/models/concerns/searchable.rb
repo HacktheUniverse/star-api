@@ -17,11 +17,17 @@ module Searchable
 
   # Override this method to change the search mapping for this model
   def to_search_mapping
-    { index: 
+    if self.respond_to?(:label)
+      key = self.label
+    else
+      key = self.name
+    end
+
+    { index:
       {
         _id: id,
         data: {
-          key: self.label || self.name,
+          key: key,
           type: self.class.table_name
         }
       }
