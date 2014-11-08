@@ -4,10 +4,10 @@ Star-API
 ## Dependencies
 
 1. Rvm, ruby, bundler
-2. Sqlite on development and postgresql on production
-3. Elastichsearch to store search metadata
+2. Sqlite on development and Postgresql on production
+3. ElasticSearch to store search metadata
  
-## The rails API
+## Setting up the Rails API
 
 You need to clone repo, run 
 ```
@@ -17,7 +17,7 @@ rake parsers:milkyway:all
 rake search:rebuild
 ```
 
-The ```rake parsers:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and sets to Postgres Backend.
+The ```rake parsers:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and stores it into Postgres.
 
 The ```rake search:rebuild``` builds search index for all these data sets.
 
