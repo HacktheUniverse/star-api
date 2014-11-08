@@ -1,3 +1,5 @@
+#+startup: showeverything
+
 ** API Examples
 
 *** Getting all the stars 
@@ -221,9 +223,9 @@ curl http://star-api.herokuapp.com/api/v1/open_cluster
 ] 
 #+END_SRC
 
-*** Search for a star
+*** Search
 
-Searching is also available to get stars that match a query. Here is an example:
+Searching is also available to get starts, exoplanets, etc... that match a query. Here is an example:
 
 #+BEGIN_SRC sh :results output code :exports both
 curl http://star-api.herokuapp.com/api/v1/search?q="Sun" | python -m json.tool

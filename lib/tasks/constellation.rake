@@ -63,8 +63,9 @@ namespace :parser  do
           last.push(star_name)
         end
       end
-      # pp galaxies
+      pp galaxies
       
+      puts "Galaxies Hash: #{galaxies}"
       galaxies.keys.each do |galaxy_name|
         galaxies[galaxy_name].keys.each do |constellation_name|
           constellation = Constellation.new
@@ -73,8 +74,9 @@ namespace :parser  do
           stars = []
           galaxies[galaxy_name][constellation_name].each do |star_name|
             label = star_name.split(":").join
-            puts label
-            star = Star.where("label LIKE ?", "#{label} %").first
+            puts "Label: #{label}"
+            star = Star.where("label LIKE ?", "#{label} %").first || Star.where("label LIKE ?", "#{label.upcase} %").first 
+            puts "Star: #{star}"
             stars << star
           end
           constellation.stars = stars.uniq

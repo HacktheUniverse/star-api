@@ -11,17 +11,30 @@ module Searchable
     end
 
     def self.search(query)
-      __elasticsearch__.search(query).records
+      __elasticsearch__.search(
+        query: {
+          match: {
+            key: query.downcase
+          }
+        },
+        size: 25
+      ).records
     end
   end
 
   # Override this method to change the search mapping for this model
   def to_search_mapping
-    { index: 
+    if self.respond_to?(:label)
+      key = self.label
+    else
+      key = self.name
+    end
+
+    { index:
       {
         _id: id,
         data: {
-          key: self.label || self.name,
+          key: key.downcase,
           type: self.class.table_name
         }
       }
