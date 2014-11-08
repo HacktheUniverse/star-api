@@ -1,8 +1,6 @@
 require 'pp'
 namespace :parser  do
   def galaxy?(line)
-
-    # binding.pry
     line.split(":")[0].split(" ")[1].length == 3
   end
 
@@ -31,26 +29,22 @@ namespace :parser  do
 
       galaxies = Hash.new { Hash.new { Array.new } }
 
-      IO::readlines(spec_file).each do |line|
-
+      last = nil
+      IO::readlines(spec_file).each do |line|                
         if unneeded_data?(line) || if_empty(line)
-          # binding.pry
         elsif galaxy?(line)
-
-          # galaxies[get_galaxy(line)] ||= Hash.new { [] }
-          # galaxies[get_galaxy(line)][get_const_arm(line)] = Array.new 
-          if galaxies[get_galaxy(line)]
-            
+          if galaxies[get_galaxy(line)].keys.length > 0
+            galaxies[get_galaxy(line)][get_const_arm(line)] = []
+            last = galaxies[get_galaxy(line)][get_const_arm(line)]
+          else 
+            constellation = { get_const_arm(line) => [] }    
+            galaxies[get_galaxy(line)] = constellation
+            last = galaxies[get_galaxy(line)][get_const_arm(line)]
           end
-          constellation = { get_const_arm(line) => [] }
-          galaxies[get_galaxy(line)] = constellation
-          # galaxies[get_galaxy(line)][get_const_arm(line)] = "abc"
-          last = galaxies[get_galaxy(line)][get_const_arm(line)]
-          # binding.pry
         else   
-          last = []       
-          star_name = line.split("#")[1].split(",")[0].split(" ")[0]
-          # binding.pry  
+          if last            
+            star_name = line.split("#")[1].split(",")[0].split(" ")[0]
+          end
           last.push(star_name)
         
         end
