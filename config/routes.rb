@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'search' => 'resources#search'
       get ':resource/:id' => 'resources#show'
       get ':resource' => 'resources#index'
+      
     end
   end
 end
