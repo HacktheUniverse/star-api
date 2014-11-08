@@ -67,8 +67,10 @@
       
 <h2>API Examples</h2>
 <h3>Getting all the stars</h3>
-<div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars <span class="p">|</span> python -m json.tool <span class="p">|</span> head -n 24
+<p>The following query&#8230;</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/stars
 </pre></div>
+<p>&#8230;would get you a list of all the stars in <code>JSON</code>.</p>
 <div class="highlight"><pre><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">&quot;absmag&quot;</span>: 4.85, 
@@ -92,11 +94,16 @@
         <span class="s2">&quot;x&quot;</span>: 0.0, 
         <span class="s2">&quot;y&quot;</span>: 0.0, 
         <span class="s2">&quot;z&quot;</span>: 0.0
-    <span class="o">}</span>, 
+    <span class="o">}</span>,
+  ...
+<span class="o">}</span>
 </pre></div>
-<h3>Get a single star (like the Sun)</h3>
-<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/stars/Sun <span class="p">|</span> python -m json.tool <span class="p">|</span> head -n 30
+<h3>Get a single star by label</h3>
+<p>It is also possible to query the stars by label,
+  here is an example of querying for the star labeled as Sun.</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/stars/Sun
 </pre></div>
+<p>Result:</p>
 <div class="highlight"><pre><span class="o">{</span>
     <span class="s2">&quot;absmag&quot;</span>: 4.85, 
     <span class="s2">&quot;appmag&quot;</span>: -26.72, 
@@ -121,8 +128,8 @@
     <span class="s2">&quot;z&quot;</span>: 0.0
 <span class="o">}</span>
 </pre></div>
-<h3>Get a specific star</h3>
-<div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli <span class="p">|</span> python -m json.tool
+<p>And here is another example of getting the <code>HIP1 HD224700 Gli</code> star.</p>
+<div class="highlight"><pre>curl -X GET http://star-api.herokuapp.com/api/v1/stars/HIP1%20HD224700%20Gli
 </pre></div>
 <div class="highlight"><pre><span class="o">{</span>
     <span class="s2">&quot;absmag&quot;</span>: 1.85, 
@@ -146,6 +153,36 @@
     <span class="s2">&quot;x&quot;</span>: -18.1007, 
     <span class="s2">&quot;y&quot;</span>: 143.562, 
     <span class="s2">&quot;z&quot;</span>: -242.612
+<span class="o">}</span>
+</pre></div>
+<h3>Search for a star</h3>
+<p>Searching is also available to get stars that match a query.
+  Here is an example:</p>
+<div class="highlight"><pre>curl http://star-api.herokuapp.com/api/v1/search?q<span class="o">=</span><span class="s2">&quot;Sun&quot;</span>
+</pre></div>
+<p>The response should match the Sun:</p>
+<div class="highlight"><pre><span class="o">{</span>
+    <span class="s2">&quot;absmag&quot;</span>: 4.85, 
+    <span class="s2">&quot;appmag&quot;</span>: -26.72, 
+    <span class="s2">&quot;colorb_v&quot;</span>: 0.65, 
+    <span class="s2">&quot;created_at&quot;</span>: <span class="s2">&quot;2014-11-08T07:30:49.614Z&quot;</span>, 
+    <span class="s2">&quot;dcalc&quot;</span>: 0.0, 
+    <span class="s2">&quot;distly&quot;</span>: 0.0, 
+    <span class="s2">&quot;hipnum&quot;</span>: 0.0, 
+    <span class="s2">&quot;id&quot;</span>: 1, 
+    <span class="s2">&quot;label&quot;</span>: <span class="s2">&quot;Sun&quot;</span>, 
+    <span class="s2">&quot;lum&quot;</span>: 0.8913, 
+    <span class="s2">&quot;plx&quot;</span>: 0.0, 
+    <span class="s2">&quot;plxerr&quot;</span>: 0.0, 
+    <span class="s2">&quot;speed&quot;</span>: 0.0, 
+    <span class="s2">&quot;texnum&quot;</span>: 1.0, 
+    <span class="s2">&quot;updated_at&quot;</span>: <span class="s2">&quot;2014-11-08T07:30:49.614Z&quot;</span>, 
+    <span class="s2">&quot;vx&quot;</span>: 0.0, 
+    <span class="s2">&quot;vy&quot;</span>: 0.0, 
+    <span class="s2">&quot;vz&quot;</span>: 0.0, 
+    <span class="s2">&quot;x&quot;</span>: 0.0, 
+    <span class="s2">&quot;y&quot;</span>: 0.0, 
+    <span class="s2">&quot;z&quot;</span>: 0.0
 <span class="o">}</span>
 </pre></div>
 
