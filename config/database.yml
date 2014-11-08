@@ -6,11 +6,3 @@ default: &default
 development:
   adapter: sqlite3
   database: star_api
-
-production:
-  adapter: postgresql
-  host: <%= ENV['PG_HOST'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
-  database: "stars"
-  user: <%= ENV['PG_HOST'] %>
-  password: <%= ENV['PG_PASSWORD'] %>
