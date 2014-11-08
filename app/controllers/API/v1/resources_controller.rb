@@ -19,6 +19,7 @@ module API
         params[:resource]
       end
 
+
       def set_resource
         @item = @resource_class.find_by_label(params[:id])
       end
