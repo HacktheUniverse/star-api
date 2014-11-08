@@ -27,7 +27,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background: image-url('starfield.jpg'); 
+  background: image-url('bg.jpg'); 
 }
 body {
   color: #fff;
@@ -110,7 +110,7 @@ body {
  */
 
 .cover {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -163,9 +163,14 @@ body {
 }
 
 .cover-container {
-  background-color:rgba(64,64,64,0.3);
+  background-color:rgba(64,64,64,0.2);
   background-size: 100%;
   border-radius: 20px;
   margin: 0 auto;
-  padding: 75px 50px;
+  padding: 5px 50px;
+}
+
+.lead {
+  margin-top: 30px;
+  font-size: 1.1em !important;
 }
