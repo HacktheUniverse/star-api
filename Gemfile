@@ -36,6 +36,6 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'pry-byebug', group: [:development, :test]
-gem 'pry'
+# gem 'pry-byebug', group: [:development, :test]
+# gem 'pry'
 
