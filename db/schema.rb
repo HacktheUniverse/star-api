@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108093946) do
+ActiveRecord::Schema.define(version: 20141108101440) do
 
   create_table "exo_planets", force: true do |t|
     t.string   "label"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20141108093946) do
     t.integer  "numplanets"
     t.float    "distance"
     t.integer  "texture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "local_groups", force: true do |t|
+    t.string   "label"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.string   "distly"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

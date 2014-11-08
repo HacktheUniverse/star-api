@@ -28,6 +28,11 @@ namespace :parser  do
       Rake.application.invoke_task("parser:milkyway:generic[expl.speck, ExoPlanet]")
     end
 
+    desc "Parser for localgroup.speck"
+    task localgroup: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
+    end
+
     desc "Generic Parser for speck files"
     task :generic, [:file_name, :model_class] => :environment  do |task, args|
       spec_file = Rails.root.join "data", "milkyway", "specks", "#{args.file_name}"
@@ -59,6 +64,7 @@ namespace :parser  do
               item[:label] = tokens[1].chomp.strip
               item_tokens = tokens[0].split(" ")
               item_tokens.each_with_index do |token, index|
+              
                 item[metadata[:columns][index.to_i + 1]] = token
               end
 
