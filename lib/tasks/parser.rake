@@ -15,7 +15,18 @@ namespace :parser do
     [line.split(" ")[0], line.split(" ")[2]]
   end
 
+
   namespace :milkyway do
+
+    desc "Parse all speck files"
+    task all: :environment do
+      Rake.application.invoke_task("parser:milkyway:stars")
+      Rake.application.invoke_task("parser:milkyway:localgroup")
+      Rake.application.invoke_task("parser:milkyway:expl")
+      Rake.application.invoke_task("parser:milkyway:oc")
+      #Rake.application.invoke_task("parser:milkyway:constellations")
+    end
+
     desc "Parser for stars.speck"
     task stars: :environment do
       Rake.application.invoke_task("parser:milkyway:generic[stars.speck, Star]")
@@ -73,7 +84,6 @@ namespace :parser do
               item[:label] = tokens[1].chomp.strip
               item_tokens = tokens[0].split(" ")
               item_tokens.each_with_index do |token, index|
-              
                 item[metadata[:columns][index.to_i + 1]] = token
               end
               items.push item
