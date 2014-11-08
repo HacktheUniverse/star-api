@@ -8,6 +8,10 @@ namespace :parser  do
     line.split(":")[0].split(" ")[1]
   end
 
+  def unneeded_data?(line)
+    line.include? "{" || line.include? "}" || line.split(" ").length == 2
+  end
+
   def get_const_arm(line)
     line.split(":")[1].split(" ").join(" ")
   end
@@ -35,26 +39,15 @@ namespace :parser  do
 
       IO::readlines(spec_file).each do |line|
         if galaxy?(line)
-          get_const_arm = #####
+          get_const_arm = 
           galaxy[get_galaxy(line)] = {get_const_arm}
-        elsif metadata?(line)
-          key, value = get_metadata_value(line)
-          if key == "datavar"
-            metadata[:columns].push(value)
-          else
-            metadata[key] = value
-          end
+        elsif unneeded_data?(line)
+
         else
-          constellation = {}
-          tokens = line.split("#")
-          unless tokens[1].nil?
-            constellation[:label] = tokens[1].chomp.strip
-            constellation_tokens = tokens[0].split(" ")
-            constellation_tokens.each_with_index do |token, index|
-              #TODO: make this float and int if its a number
-              constellation[metadata[:columns][index.to_i + 1]] = token 
-            end
-          end
+          constellation = []
+          star_name = line.split("#")[1].split(",")[0].split(" ")[0]
+          constellation.push(star_name)
+          
           galaxy.push(constellation)
         end
       end
