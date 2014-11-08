@@ -1,5 +1,6 @@
 require 'pp'
-namespace :parser  do
+require 'byebug'
+namespace :parser do
   def comment?(line)
     line.start_with? "#"
   end
@@ -57,8 +58,6 @@ namespace :parser  do
               metadata[key] = value
             end
           else
-            item = {}
-
             tokens = line.split("#")
             if tokens[1].present?
               item[:label] = tokens[1].chomp.strip
@@ -67,7 +66,6 @@ namespace :parser  do
               
                 item[metadata[:columns][index.to_i + 1]] = token
               end
-
               items.push item
             end
           end
