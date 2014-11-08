@@ -41,11 +41,11 @@ namespace :parser  do
             galaxies[get_galaxy(line)] = constellation
             last = galaxies[get_galaxy(line)][get_const_arm(line)]
           end
-        else   
-          if last            
+        else
+          if last
             star_name = line.split("#")[1].split(",")[0].split(" ")[0]
           end
-          last.push(star_name)        
+          last.push(star_name)
         end
       end
       pp galaxies

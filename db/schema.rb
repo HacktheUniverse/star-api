@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108093946) do
+ActiveRecord::Schema.define(version: 20141108102320) do
+
+  create_table "constellations", force: true do |t|
+    t.string "name"
+    t.string "galaxy"
+  end
 
   create_table "exo_planets", force: true do |t|
     t.string   "label"

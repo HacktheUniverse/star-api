@@ -60,7 +60,6 @@ namespace :parser do
               item_tokens.each_with_index do |token, index|
                 item[metadata[:columns][index.to_i + 1]] = token
               end
-
               items.push item
             end
           end
