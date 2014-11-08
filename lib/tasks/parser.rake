@@ -24,6 +24,8 @@ namespace :parser do
       Rake.application.invoke_task("parser:milkyway:localgroup")
       Rake.application.invoke_task("parser:milkyway:expl")
       Rake.application.invoke_task("parser:milkyway:oc")
+      Rake.application.invoke_task("parser:milkyway:galgrid")
+      Rake.application.invoke_task("parser:milkyway:target1lmonth")
       #Rake.application.invoke_task("parser:milkyway:constellations")
     end
 
@@ -45,6 +47,16 @@ namespace :parser do
     desc "Parser for localgroup.speck"
     task localgroup: :environment do
       Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
+    end
+
+    desc "Parser for galgrid.speck"
+    task galgrid: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[galgrid.speck, GalGrid]")
+    end
+
+    desc "Parser for target1lmonth.speck"
+    task target1lmonth: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[target1lmonth.speck, Target1lmonth]")
     end
 
     desc "Generic Parser for speck files"
@@ -77,20 +89,28 @@ namespace :parser do
             else
               metadata[key] = value
             end
-          else
-            tokens = line.split("#")
+          elsif line.split(" ").length == 3
             item = {}
-            if tokens[1].present?
-              item[:label] = tokens[1].chomp.strip
-              item_tokens = tokens[0].split(" ")
+              item_tokens = line.split(" ")
               item_tokens.each_with_index do |token, index|
                 item[metadata[:columns][index.to_i + 1]] = token
               end
               items.push item
+          else 
+            tokens = line.split("#")
+            item = {}
+            if tokens[1].present?
+              item[:label] = tokens[1].chomp.strip
+              item[:label] = tokens[0].split(" ")
+              item_tokens.each_with_index do |token, index|
+                item[metadata[:columns][index.to_i + 1]] = token
+              end
+            items.push item
             end
           end
         end
         args.model_class.constantize.create! items
+        pp items
       end
     end
   end
