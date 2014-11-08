@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108102320) do
+ActiveRecord::Schema.define(version: 20141108151747) do
+
+  create_table "constellation_star_unions", force: true do |t|
+    t.integer "star_id"
+    t.integer "constellation_id"
+  end
+
+  add_index "constellation_star_unions", ["constellation_id"], name: "index_constellation_star_unions_on_constellation_id"
+  add_index "constellation_star_unions", ["star_id"], name: "index_constellation_star_unions_on_star_id"
 
   create_table "constellations", force: true do |t|
     t.string "name"
