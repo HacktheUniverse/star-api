@@ -36,6 +36,16 @@ namespace :parser do
       Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
     end
 
+  namespace :extragalactic do 
+    desc "Parser for sdssgals.speck"
+    task sdssgals: :environment do 
+      Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
+    end
+
+
+
+  end
+
     desc "Generic Parser for speck files"
     task :generic, [:file_name, :model_class] => :environment  do |task, args|
       spec_uri = "/users/abbott/dudata/milkyway/specks/#{args.file_name}"
