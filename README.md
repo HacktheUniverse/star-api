@@ -1,4 +1,4 @@
-star-api
+Star-api
 ========
 The API has the following components
 
@@ -18,7 +18,8 @@ rake parsers:milkyway:all
 rake search:rebuild
 ```
 
-The ```rake parsers:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and sets to Postgres Backend
+The ```rake parsers:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and sets to Postgres Backend.
+
 The ```rake search:rebuild``` builds search index for all these data sets.
 
 
