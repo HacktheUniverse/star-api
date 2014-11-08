@@ -6,8 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'search' => 'resources#search'
       get ':resource/:id' => 'resources#show'
-      get ':resource' => 'resources#index'
-      
+      get ':resource' => 'resources#index'       
     end
   end
 end

@@ -12,13 +12,19 @@ module API
             @items = @items.where(filter)
           end
         end
-
-        items = @resource_class.all
-        paginate json: items, per_page: 500
+        if @items[0].is_a?(Constellation)
+          paginate json: @items.as_json(include: :stars), per_page: 500
+        else
+          paginate json: @items, per_page: 500
+        end              
       end
 
-      def show
-        :json => @item
+      def show 
+        if @items[0].is_a?(Constellation)
+          paginate json: @items.as_json(include: :stars), per_page: 500
+        else
+          paginate json: @items, per_page: 500
+        end
       end
 
       def search
@@ -49,7 +55,8 @@ module API
       end
 
       def set_resource
-        @item = @resource_class.find_by_label(params[:id])
+        # @items = @resource_class.find_by_label(params[:id])
+        @items = @resource_class.where(id: params[:id])
       end
 
       def set_resource_class
