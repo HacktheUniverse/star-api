@@ -8,8 +8,6 @@ The following query...
 curl -X GET http://star-api.herokuapp.com/api/v1/stars
 #+END_SRC
 
-...would get you a list of all the stars in =JSON=.
-
 #+RESULTS:
 #+BEGIN_SRC sh
 [
@@ -36,7 +34,11 @@ curl -X GET http://star-api.herokuapp.com/api/v1/stars
         "y": 0.0, 
         "z": 0.0
     }, 
+   ...
+]
 #+END_SRC
+
+...would get you a list of all the stars in =JSON=.
 
 *** Get a single star by label
 
