@@ -36,7 +36,14 @@ namespace :parser do
 
     desc "Generic Parser for speck files"
     task :generic, [:file_name, :model_class] => :environment  do |task, args|
-      spec_file = Rails.root.join "data", "milkyway", "specks", "#{args.file_name}"
+      spec_uri = "/users/abbott/dudata/milkyway/specks/#{args.file_name}"
+      spec_file = Tempfile.new('speck')
+      Net::HTTP.start("research.amnh.org") do |http|
+        resp = http.get(spec_uri)
+        open(spec_file, "wb") do |file|
+          file.write(resp.body)
+        end
+      end
 
       comments = []
       metadata = {
@@ -59,6 +66,7 @@ namespace :parser do
             end
           else
             tokens = line.split("#")
+            item = {}
             if tokens[1].present?
               item[:label] = tokens[1].chomp.strip
               item_tokens = tokens[0].split(" ")

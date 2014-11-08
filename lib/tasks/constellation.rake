@@ -24,8 +24,23 @@ namespace :parser  do
   namespace :milkyway do
     desc "Parser for stars.speck"
     task constellations: :environment do
-      spec_file = Rails.root.join "data", "milkyway", "specks", "constellations.speck"
-      label_file = Rails.root.join "data", "milkyway", "specks", "constellations.label"
+      spec_uri = "/users/abbott/dudata/milkyway/specks/constellations.speck"
+      label_uri = "/users/abbott/dudata/milkyway/specks/constellations.label"
+      spec_file = Tempfile.new('speck')
+      label_file = Tempfile.new('label')
+      Net::HTTP.start("research.amnh.org") do |http|
+        resp = http.get(spec_uri)
+        open(spec_file, "wb") do |file|
+          file.write(resp.body)
+        end
+      end
+
+      Net::HTTP.start("research.amnh.org") do |http|
+        resp = http.get(label_uri)
+        open(label_file, "wb") do |file|
+          file.write(resp.body)
+        end
+      end
 
       galaxies = Hash.new { Hash.new { Array.new } }
 
@@ -56,6 +71,7 @@ namespace :parser  do
           constellation.name = constellation_name
           constellation.galaxy = galaxy_name
           stars = galaxies[galaxy_name][constellation_name].map { |star_name| Star.where("label LIKE ?", "#{star_name} ") }
+          puts "Stars is #{stars.to_a}"
           constellation.stars = stars
         end
       end
