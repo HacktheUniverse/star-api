@@ -11,8 +11,20 @@ module API
       end
 
       def show
-        render :json => @item
+        if request.query_string.present?
+          request.query_parameters.each do |k, v|
+            if k == 'max_distance_from_sun' && @resource_class == Star
+              items = @resource_class.where('distly < ?', v)
+              render json: items
+            end
+          end
+        else
+          render :json => @item
+        end
       end
+
+
+
 
       private
       def resource
