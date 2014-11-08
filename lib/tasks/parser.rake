@@ -15,7 +15,17 @@ namespace :parser  do
   namespace :milkyway do
     desc "Parser for stars.speck"
     task stars: :environment do
-      spec_file = Rails.root.join "data", "milkyway", "specks", "stars.speck"
+      Rake.application.invoke_task("parser:milkyway:generic[stars.speck, Star]")
+    end
+
+    desc "Parser for oc.speck"
+    task oc: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[oc.speck, OpenCluster]")
+    end
+
+    desc "Generic Parser for speck files"
+    task :generic, [:file_name, :model_class] => :environment  do |task, args|
+      spec_file = Rails.root.join "data", "milkyway", "specks", "#{args.file_name}"
 
       comments = []
       metadata = {
@@ -23,9 +33,11 @@ namespace :parser  do
       }
 
       IO::readlines(spec_file).each_slice(1000) do |lines|
-        stars = []
+        items = []
         lines.each do |line|
-          if comment?(line)
+          if line.empty?
+            next
+          elsif comment?(line)
             comments.push(line)
           elsif metadata?(line)
             key, value = get_metadata_value(line)
@@ -35,19 +47,21 @@ namespace :parser  do
               metadata[key] = value
             end
           else
-            star = {}
-            tokens = line.split("#")
-            star[:label] = tokens[1].chomp.strip
+            item = {}
 
-            star_tokens = tokens[0].split(" ")
-            star_tokens.each_with_index do |token, index|
-              #TODO: make this float and int if its a number
-              star[metadata[:columns][index.to_i + 1]] = token
+            tokens = line.split("#")
+            if tokens[1].present?
+              item[:label] = tokens[1].chomp.strip
+              item_tokens = tokens[0].split(" ")
+              item_tokens.each_with_index do |token, index|
+                item[metadata[:columns][index.to_i + 1]] = token
+              end
+
+              items.push item
             end
-            stars.push star
           end
         end
-        Star.create! stars
+        args.model_class.constantize.create! items
       end
     end
   end

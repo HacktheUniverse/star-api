@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108072039) do
+ActiveRecord::Schema.define(version: 20141108091705) do
+
+  create_table "open_clusters", force: true do |t|
+    t.string   "label"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.float    "diam"
+    t.float    "logage"
+    t.float    "metal"
+    t.float    "distly"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "stars", force: true do |t|
     t.string   "label"
