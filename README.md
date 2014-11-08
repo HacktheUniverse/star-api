@@ -1,6 +1,10 @@
 Star-API
 ========
 
+#Category: Toolkit
+#Presentation URL: (Presentation)[https://speakerdeck.com/surenm/building-rest-api-for-digital-universe]
+
+
 ## Dependencies
 
 1. Rvm, ruby, bundler
