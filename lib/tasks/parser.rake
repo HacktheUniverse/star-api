@@ -23,6 +23,11 @@ namespace :parser  do
       Rake.application.invoke_task("parser:milkyway:generic[oc.speck, OpenCluster]")
     end
 
+    desc "Parser for expl.speck"
+    task expl: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[expl.speck, ExoPlanet]")
+    end
+
     desc "Generic Parser for speck files"
     task :generic, [:file_name, :model_class] => :environment  do |task, args|
       spec_file = Rails.root.join "data", "milkyway", "specks", "#{args.file_name}"
