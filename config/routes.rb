@@ -4,9 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     namespace :v1 do
-
-      resources :stars
-      
-    end  
+      get ':resource/:id' => 'resources#show'
+      get ':resource' => 'resources#index'
+    end
   end
 end

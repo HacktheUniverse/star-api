@@ -21,9 +21,9 @@ namespace :parser  do
       metadata = {
         columns: ["label", "x", "y", "z"]
       }
-      stars = []
+      stars = {}
 
-      IO::readlines(spec_file).each do |line|
+      IO::readlines(spec_file).first(1000).each do |line|
         if comment?(line)
           comments.push(line)
         elsif metadata?(line)
@@ -41,15 +41,13 @@ namespace :parser  do
           star_tokens = tokens[0].split(" ")
           star_tokens.each_with_index do |token, index|
             #TODO: make this float and int if its a number
-            star[metadata[:columns][index.to_i + 1]] = token 
+            star[metadata[:columns][index.to_i + 1]] = token
           end
 
-          stars.push(star)
+          stars[star[:label]] = star
         end
-
       end
-
-      pp stars
+      Rails.cache.write(:stars, stars)
     end
   end
 end
