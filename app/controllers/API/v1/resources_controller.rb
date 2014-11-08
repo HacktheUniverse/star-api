@@ -6,10 +6,10 @@ module API
       respond_to :json
  
       def index
-        items = @resource_class.all
+        @items = @resource_class.all
         if request.query_string.present?
           filters.each do |filter|
-            @items = items.where(filter)
+            @items = @items.where(filter)
           end
         end
       end
