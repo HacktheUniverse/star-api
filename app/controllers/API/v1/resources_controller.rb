@@ -7,7 +7,7 @@ module API
 
       def index
         items = @resource_class.all
-        paginate json: items, per_page: 1000
+        render json: items
       end
 
       def show
