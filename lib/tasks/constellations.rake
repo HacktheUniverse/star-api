@@ -30,7 +30,7 @@ namespace :parser  do
       galaxies = Hash.new { Hash.new { Array.new } }
 
       last = nil
-      IO::readlines(spec_file).each do |line|                
+      IO::readlines(spec_file).each do |line|
         if unneeded_data?(line) || if_empty(line)
         elsif galaxy?(line)
           if galaxies[get_galaxy(line)].keys.length > 0
@@ -45,11 +45,20 @@ namespace :parser  do
           if last            
             star_name = line.split("#")[1].split(",")[0].split(" ")[0]
           end
-          last.push(star_name)
-        
+          last.push(star_name)        
         end
       end
       pp galaxies
+      
+      galaxies.keys.each do |galaxy_name|
+        galaxies[galaxy_name].keys.each do |constellation_name|
+          constellation = Constellation.new
+          constellation.name = constellation_name
+          constellation.galaxy = galaxy_name
+          stars = galaxies[galaxy_name][constellation_name].map { |star_name| Star.where(name: star_name) }
+          constellation.stars = stars
+        end
+      end
     end
   end
 end

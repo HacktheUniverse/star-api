@@ -5,7 +5,7 @@ namespace :parser  do
   end
 
   def metadata?(line)
-    ["datavar", "texture", "texturevar"].include? line.split(" ").first
+    ["datavar"].include? line.split(" ").first
   end
 
   def get_metadata_value(line)
