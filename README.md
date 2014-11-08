@@ -32,22 +32,22 @@ The ```rake search:rebuild``` builds search index for all these data sets.
 ## Examples query filters
 
 1. Run this query to filter only blue stars:  
-`[http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0](http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0)`
+[http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0](http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0)
 2. To see only red stars:
-`[http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1](http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1)`
+[http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1](http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1)
 3. To filter stars you can see with the naked yield: 
-`[http://star-api.herokuapp.com/api/v1/stars?min[appmag]=-2.5&max[appmag]=6.5](http://st6.5r-api.herokuapp.com/api/v1/stars?min[appmag]=-2.5&max[appmag]=6.5)`
+[http://star-api.herokuapp.com/api/v1/stars?min[appmag]=-2.5&max[appmag]=6.5](http://st6.5r-api.herokuapp.com/api/v1/stars?min[appmag]=-2.5&max[appmag]=6.5)
 4. To see stars brighter than 7.5 mag: 
-`[http://star-api.herokuapp.com/api/v1/stars?max[appmag]=7.5](http://st6.5r-api.herokuapp.com/api/v1/stars?max[appmag]=7.5)`
+[http://star-api.herokuapp.com/api/v1/stars?max[appmag]=7.5](http://st6.5r-api.herokuapp.com/api/v1/stars?max[appmag]=7.5)
 5. To see only the trig parallax stars: 
-`[http://star-api.herokuapp.com/api/v1/stars?dcalc=1](http://st6.5r-api.herokuapp.com/api/v1/stars?dcalc=1)`
+[http://star-api.herokuapp.com/api/v1/stars?dcalc=1](http://st6.5r-api.herokuapp.com/api/v1/stars?dcalc=1)
 6.  To see only the weighted mean stars: 
-`[http://star-api.herokuapp.com/api/v1/stars?dcalc=2](http://st6.5r-api.herokuapp.com/api/v1/stars?dcalc=2)`
+[http://star-api.herokuapp.com/api/v1/stars?dcalc=2](http://st6.5r-api.herokuapp.com/api/v1/stars?dcalc=2)
 7. To see all the intrinsically bright stars:
-`[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3)`
+[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-3)
 8. To see all the intrinsically fain stars: 
-`[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=0&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-10)`
+[http://star-api.herokuapp.com/api/v1/stars?min[absmag]=0&max[absmag]=-3](http://star-api.herokuapp.com/api/v1/stars?min[absmag]=10&max[absmag]=-10)
 9. To see all stars within 100 light-years:
-`[http://star-api.herokuapp.com/api/v1/stars?max[distly]=100](http://star-api.herokuapp.com/api/v1/stars?max[distly]=100)`
+[http://star-api.herokuapp.com/api/v1/stars?max[distly]=100](http://star-api.herokuapp.com/api/v1/stars?max[distly]=100)
 9. To see all stars within 500 light-years:
-`[http://star-api.herokuapp.com/api/v1/stars?max[distly]=500](http://star-api.herokuapp.com/api/v1/stars?max[distly]=500)`
+[http://star-api.herokuapp.com/api/v1/stars?max[distly]=500](http://star-api.herokuapp.com/api/v1/stars?max[distly]=500)
