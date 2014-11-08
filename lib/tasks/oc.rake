@@ -43,7 +43,7 @@ namespace :parser do
             oc_tokens = tokens[0].split(" ")
             oc_tokens.each_with_index do |token, index|
               #TODO: make this float and int if its a number
-              oc[metadata[:columns][index.to_i + 1]] = token 
+              oc[metadata[:columns][index.to_i]] = token 
             end
           end
           open_clusters.push(oc)
