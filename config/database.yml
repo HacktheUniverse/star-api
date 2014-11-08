@@ -9,8 +9,8 @@ development:
 
 production:
   adapter: postgresql
-  host: ENV['PG_HOST']
-  password: ENV['PG_PASSWORD']
+  host: <%= ENV['PG_HOST'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
   database: "stars"
-  user: ENV['PG_HOST']
-  password: ENV['PG_PASSWORD']
+  user: <%= ENV['PG_HOST'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
