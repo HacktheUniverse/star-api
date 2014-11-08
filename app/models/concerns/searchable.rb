@@ -11,7 +11,14 @@ module Searchable
     end
 
     def self.search(query)
-      __elasticsearch__.search(query).records
+      __elasticsearch__.search(
+        query: {
+          match: {
+            key: query.downcase
+          }
+        },
+        size: 25
+      ).records
     end
   end
 
@@ -27,7 +34,7 @@ module Searchable
       {
         _id: id,
         data: {
-          key: key,
+          key: key.downcase,
           type: self.class.table_name
         }
       }
