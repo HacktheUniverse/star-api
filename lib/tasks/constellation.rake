@@ -30,7 +30,7 @@ namespace :parser  do
       galaxies = Hash.new { Hash.new { Array.new } }
 
       last = nil
-      IO::readlines(spec_file).each do |line|
+      IO::readlines(spec_file)[9..-1].each do |line|
         if unneeded_data?(line) || if_empty(line)
         elsif galaxy?(line)
           if galaxies[get_galaxy(line)].keys.length > 0
