@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108102320) do
+ActiveRecord::Schema.define(version: 20141108150121) do
 
   create_table "constellations", force: true do |t|
     t.string "name"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20141108102320) do
     t.integer  "numplanets"
     t.float    "distance"
     t.integer  "texture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gal_grids", force: true do |t|
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,6 +80,14 @@ ActiveRecord::Schema.define(version: 20141108102320) do
     t.float    "vz"
     t.float    "speed"
     t.float    "hipnum"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "target1lmonths", force: true do |t|
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
