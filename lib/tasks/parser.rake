@@ -39,7 +39,43 @@ namespace :parser do
   namespace :extragalactic do 
     desc "Parser for sdssgals.speck"
     task sdssgals: :environment do 
-      Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
+
+      spec_file = 
+      IO::readlines(spec_file).each_slice(1000) do |lines|
+        items = []
+        lines.each do |line|
+          if line.empty?
+            next
+          elsif comment?(line)
+            comments.push(line)
+          elsif metadata?(line)
+            key, value = get_metadata_value(line)
+            if key == "datavar"
+              metadata[:columns].push(value)
+            else
+              metadata[key] = value
+            end
+          else
+            tokens = line.split("#")
+            item = {}
+            if tokens[1].present?
+              item[:label] = tokens[1].chomp.strip
+              item_tokens = tokens[0].split(" ")
+              item_tokens.each_with_index do |token, index|
+              
+                item[metadata[:columns][index.to_i + 1]] = token
+              end
+              items.push item
+            end
+          end
+        end
+        args.model_class.constantize.create! items
+      end
+
+
+
+
+
     end
 
 
@@ -77,14 +113,10 @@ namespace :parser do
               metadata[key] = value
             end
           else
-            tokens = line.split("#")
             item = {}
-            if tokens[1].present?
-              item[:label] = tokens[1].chomp.strip
-              item_tokens = tokens[0].split(" ")
+              item_tokens = line.split(" ")
               item_tokens.each_with_index do |token, index|
-              
-                item[metadata[:columns][index.to_i + 1]] = token
+                item[metadata[:columns][index.to_i]] = token
               end
               items.push item
             end
