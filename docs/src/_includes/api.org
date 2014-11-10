@@ -282,7 +282,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": -1.15, 
@@ -309,7 +309,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
     },
    ..
 ]
-#+end_example
+#+end_src
 
 *** Filter only red stars
 
@@ -320,7 +320,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 4.85, 
@@ -347,7 +347,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
     }, 
     ..
 ]
-#+end_example
+#+end_src
 
 *** Filter stars you can see with the naked yield
 
@@ -356,7 +356,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappm
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 1.97, 
@@ -383,7 +383,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappm
     }, 
    ...
 ]
-#+end_example
+#+end_src
 
 *** Filters for stars brighter than 7.5 mag
 
@@ -392,7 +392,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 4.85, 
@@ -419,7 +419,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
     }, 
    ...
 ]
-#+end_example
+#+end_src
 
 *** Filter only the trig parallax stars
 
@@ -428,7 +428,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | 
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 4.85, 
@@ -455,7 +455,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | 
     }, 
   ...
 ]
-#+end_example
+#+end_src
 
 *** Filter only the weighted mean stars
 
@@ -464,7 +464,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 4.85, 
@@ -491,7 +491,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
     }, 
  ...
 ]
-#+end_example
+#+end_src
 
 *** COMMENT Filter all the intrinsically bright stars
 
@@ -518,7 +518,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js
 [
     {
         "absmag": 4.85, 
@@ -545,7 +545,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
     }, 
    ...
 ]
-#+end_example
+#+end_src
 
 *** Filter all stars within 500 light-years
 
@@ -554,7 +554,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=500
 #+END_SRC
 
 #+RESULTS:
-#+begin_example js
+#+begin_src js 
 [
     {
         "absmag": 4.85, 
@@ -604,5 +604,5 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=500
     }, 
   ...
 ]
-#+end_example
+#+end_src
 
