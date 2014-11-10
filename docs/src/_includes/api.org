@@ -1,6 +1,8 @@
 #+startup: showeverything
 
-** API Examples
+* Star API Examples
+
+** Basic queries
 
 *** Getting all the stars 
 
@@ -268,4 +270,339 @@ The response should match at least the Sun:
 ]
 #+END_SRC
 
+
+** Advanced queries
+
+*** Filter only blue stars
+
+# curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bcolorb_v%5D=-1&max%5Bcolorb_v%5D=0" | python -m json.tool | head -n 24
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": -1.15, 
+        "appmag": 6.61, 
+        "colorb_v": -0.005, 
+        "created_at": "2014-11-08T14:49:09.380Z", 
+        "dcalc": 1.0, 
+        "distly": 1160.14, 
+        "hipnum": 3.0, 
+        "id": 53797, 
+        "label": "HIP3 HD224699 Gli", 
+        "lum": 223.14508, 
+        "plx": 2.81, 
+        "plxerr": 22.42, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.380Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": -123.258, 
+        "y": 303.6977, 
+        "z": -138.6362
+    },
+   ..
+]
+#+end_example
+
+*** Filter only red stars
+
+# curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bcolorb_v%5D=0&max%5Bcolorb_v%5D=1" | python -m json.tool | head -n 25
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+    ..
+]
+#+end_example
+
+*** Filter stars you can see with the naked yield
+
+#+BEGIN_SRC sh :results output
+curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappmag%5D=6.5" | python -m json.tool | head -n 24
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 1.97, 
+        "appmag": 6.28, 
+        "colorb_v": 0.636, 
+        "created_at": "2014-11-08T14:49:09.584Z", 
+        "dcalc": 1.0, 
+        "distly": 237.26, 
+        "hipnum": 25.0, 
+        "id": 53818, 
+        "label": "HIP25 HD224750 Gli", 
+        "lum": 12.64813, 
+        "plx": 13.74, 
+        "plxerr": 7.13, 
+        "speed": 46.039, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.584Z", 
+        "vx": -0.815, 
+        "vy": -28.729, 
+        "vz": -35.966, 
+        "x": 21.6675, 
+        "y": -12.2538, 
+        "z": -68.391
+    }, 
+   ...
+]
+#+end_example
+
+*** Filters for stars brighter than 7.5 mag
+
+#+BEGIN_SRC sh :results output
+curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+   ...
+]
+#+end_example
+
+*** Filter only the trig parallax stars
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | head -n 24
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+  ...
+]
+#+end_example
+
+*** Filter only the weighted mean stars
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+ ...
+]
+#+end_example
+
+*** COMMENT Filter all the intrinsically bright stars
+
+#+BEGIN_SRC sh :results output
+curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=10&max%5Babsmag%5D=-3" | python -m json.tool
+#+END_SRC
+
+#+RESULTS:
+: []
+
+*** COMMENT Filter all the intrinsically faint stars
+
+#+BEGIN_SRC sh :results output
+curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=0&max%5Babsmag%5D=-3" | python -m json.tool
+#+END_SRC
+
+#+RESULTS:
+: []
+
+*** Filter all stars within 100 light-years
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+   ...
+]
+#+end_example
+
+*** Filter all stars within 500 light-years
+
+#+BEGIN_SRC sh :results output
+curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=500
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[
+    {
+        "absmag": 4.85, 
+        "appmag": -26.72, 
+        "colorb_v": 0.65, 
+        "created_at": "2014-11-08T14:49:09.334Z", 
+        "dcalc": 0.0, 
+        "distly": 0.0, 
+        "hipnum": 0.0, 
+        "id": 53794, 
+        "label": "Sun", 
+        "lum": 0.8913, 
+        "plx": 0.0, 
+        "plxerr": 0.0, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.334Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 0.0, 
+        "y": 0.0, 
+        "z": 0.0
+    }, 
+    {
+        "absmag": 5.97, 
+        "appmag": 9.27, 
+        "colorb_v": 1.038, 
+        "created_at": "2014-11-08T14:49:09.370Z", 
+        "dcalc": 1.0, 
+        "distly": 148.86, 
+        "hipnum": 2.0, 
+        "id": 53796, 
+        "label": "HIP2 HD224690 Gli", 
+        "lum": 0.31704, 
+        "plx": 21.9, 
+        "plxerr": 14.16, 
+        "speed": 0.0, 
+        "texnum": 1.0, 
+        "updated_at": "2014-11-08T14:49:09.370Z", 
+        "vx": 0.0, 
+        "vy": 0.0, 
+        "vz": 0.0, 
+        "x": 5.0098, 
+        "y": 9.8817, 
+        "z": -44.2976
+    }, 
+  ...
+]
+#+end_example
 
