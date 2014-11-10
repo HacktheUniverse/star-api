@@ -282,7 +282,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": -1.15, 
@@ -320,7 +320,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
@@ -356,7 +356,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappm
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 1.97, 
@@ -392,7 +392,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
@@ -428,7 +428,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | 
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
@@ -464,7 +464,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
@@ -518,7 +518,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
@@ -554,7 +554,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=500
 #+END_SRC
 
 #+RESULTS:
-#+begin_example
+#+begin_example js
 [
     {
         "absmag": 4.85, 
