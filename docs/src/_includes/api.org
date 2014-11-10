@@ -277,7 +277,7 @@ The response should match at least the Sun:
 
 # curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bcolorb_v%5D=-1&max%5Bcolorb_v%5D=0" | python -m json.tool | head -n 24
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
 #+END_SRC
 
@@ -315,7 +315,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=-1&max[colorb_v]=0
 
 # curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bcolorb_v%5D=0&max%5Bcolorb_v%5D=1" | python -m json.tool | head -n 25
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
 #+END_SRC
 
@@ -351,7 +351,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?min[colorb_v]=0&max[colorb_v]=1
 
 *** Filter stars you can see with the naked yield
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappmag%5D=6.5" | python -m json.tool | head -n 24
 #+END_SRC
 
@@ -387,7 +387,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Bappmag%5D=-2.5&max%5Bappm
 
 *** Filters for stars brighter than 7.5 mag
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
 #+END_SRC
 
@@ -423,7 +423,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?max%5Bappmag%5D=7.5"
 
 *** Filter only the trig parallax stars
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | head -n 24
 #+END_SRC
 
@@ -459,7 +459,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=1 | python -m json.tool | 
 
 *** Filter only the weighted mean stars
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
 #+END_SRC
 
@@ -495,7 +495,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?dcalc=2
 
 *** COMMENT Filter all the intrinsically bright stars
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=10&max%5Babsmag%5D=-3" | python -m json.tool
 #+END_SRC
 
@@ -504,7 +504,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=10&max%5Babsmag
 
 *** COMMENT Filter all the intrinsically faint stars
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=0&max%5Babsmag%5D=-3" | python -m json.tool
 #+END_SRC
 
@@ -513,7 +513,7 @@ curl "http://star-api.herokuapp.com/api/v1/stars?min%5Babsmag%5D=0&max%5Babsmag%
 
 *** Filter all stars within 100 light-years
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
 #+END_SRC
 
@@ -549,7 +549,7 @@ curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=100
 
 *** Filter all stars within 500 light-years
 
-#+BEGIN_SRC sh :results output
+#+BEGIN_SRC sh :results output  :exports both
 curl http://star-api.herokuapp.com/api/v1/stars?max%5Bdistly%5D=500
 #+END_SRC
 
