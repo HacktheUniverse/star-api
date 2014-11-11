@@ -12,19 +12,26 @@ module API
             @items = @items.where(filter)
           end
         end
-
-        paginate json: @items, per_page: 500
+        if @items[0].is_a?(Constellation)
+          paginate json: @items.as_json(include: :stars), per_page: 500
+        else
+          paginate json: @items, per_page: 500
+        end              
       end
 
-      def show
-        render :json => @item
+      def show 
+        if @items[0].is_a?(Constellation)
+          paginate json: @items.as_json(include: :stars), per_page: 500
+        else
+          paginate json: @items, per_page: 500
+        end
       end
 
       def search
         query = params[:q]
         models = [Star, ExoPlanet, LocalGroup, OpenCluster, Constellation]
-        search_response = Hash[models.map {|m| [m.table_name, m.search(query)]}]
-        render :json => search_response
+        search_response = models.map {|m| m.search(query) }
+        paginate :json => search_response, per_page: 500
       end
 
       private
@@ -39,7 +46,7 @@ module API
 
       def max_filters
         params[:max] = [] if params[:max].blank?
-        params[:max].select {|key, value| @resource_class.column_names.include? key.to_s }
+        params[:max].select {|key, value| @resource_class.column_names.include? key.to_s } if params[:max]
       end
 
       def min_filters
@@ -48,7 +55,8 @@ module API
       end
 
       def set_resource
-        @item = @resource_class.find_by_label(params[:id])
+        # @items = @resource_class.find_by_label(params[:id])
+        @items = @resource_class.where(id: params[:id])
       end
 
       def set_resource_class
