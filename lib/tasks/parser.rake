@@ -26,6 +26,7 @@ namespace :parser do
       Rake.application.invoke_task("parser:milkyway:oc")
       Rake.application.invoke_task("parser:milkyway:galgrid")
       Rake.application.invoke_task("parser:milkyway:target1lmonth")
+      Rake.application.invoke_task("parser:milkyway:h2region")
       #Rake.application.invoke_task("parser:milkyway:constellations")
     end
 
@@ -49,7 +50,6 @@ namespace :parser do
       Rake.application.invoke_task("parser:milkyway:generic[localgroup.speck, LocalGroup]")
     end
 
-
     desc "Parser for galgrid.speck"
     task galgrid: :environment do
       Rake.application.invoke_task("parser:milkyway:generic[galgrid.speck, GalGrid]")
@@ -58,6 +58,11 @@ namespace :parser do
     desc "Parser for target1lmonth.speck"
     task target1lmonth: :environment do
       Rake.application.invoke_task("parser:milkyway:generic[target1lmonth.speck, Target1lmonth]")
+    end
+
+    desc "Parser for h2region.speck"
+    task h2region: :environment do
+      Rake.application.invoke_task("parser:milkyway:generic[h2region.speck, H2region]")
     end
 
     desc "Generic Parser for speck files"
