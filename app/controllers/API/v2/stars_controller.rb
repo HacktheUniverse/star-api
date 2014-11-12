@@ -4,7 +4,7 @@ module API
 
       respond_to :json
 
-      def index
+      def index 
         @stars = Star.all
         paginate json: @stars, per_page: 500  
       end
