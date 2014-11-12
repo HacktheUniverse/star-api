@@ -5,12 +5,12 @@ module API
       respond_to :json
 
       def index
-        @stars = Stars.all
+        @stars = Star.all
         paginate json: @stars, per_page: 500  
       end
 
       def show
-        @star = Stars.find_by_label(params[:label])
+        @star = Star.find_by_label(params[:label])
         render :json => @star
       end
 
