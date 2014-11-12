@@ -37,8 +37,6 @@ gem 'spring',        group: :development
 
 gem 'haml-rails'
 
-gem 'pry-byebug'
-gem 'pry-rails'
 
 gem 'elasticsearch'
 gem 'elasticsearch-model'
@@ -46,5 +44,17 @@ gem 'elasticsearch-rails'
 
 gem 'bootstrap-sass'
 gem 'rails_12factor'
+
+group :development do
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'factory_girl'
+end
+
+group :testing do
+  gem 'factory_girl'
+  gem 'rspec-rails'
+
+end
 
 
