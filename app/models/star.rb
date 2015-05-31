@@ -1,6 +1,5 @@
 class Star < ActiveRecord::Base
-  include Searchable
-  
+
   has_many(
     :constellation_star_unions,
     class_name: "ConstellationStarUnion",

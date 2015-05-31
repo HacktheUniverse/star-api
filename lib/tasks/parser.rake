@@ -24,8 +24,6 @@ namespace :parser do
       Rake.application.invoke_task("parser:milkyway:localgroup")
       Rake.application.invoke_task("parser:milkyway:expl")
       Rake.application.invoke_task("parser:milkyway:oc")
-      Rake.application.invoke_task("parser:milkyway:galgrid")
-      Rake.application.invoke_task("parser:milkyway:target1lmonth")
       #Rake.application.invoke_task("parser:milkyway:constellations")
     end
 
@@ -111,7 +109,6 @@ namespace :parser do
             end
           end
         end
-        pp items
         args.model_class.constantize.create! items
       end
     end

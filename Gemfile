@@ -40,10 +40,6 @@ gem 'haml-rails'
 gem 'pry-byebug'
 gem 'pry-rails'
 
-gem 'elasticsearch'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-
 gem 'bootstrap-sass'
 gem 'rails_12factor'
 

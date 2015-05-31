@@ -19,12 +19,6 @@ module API
       def show
         render :json => @item
       end
-
-      def search
-        query = params[:q]
-        models = [Star, ExoPlanet, LocalGroup, OpenCluster, Constellation]
-        search_response = Hash[models.map {|m| [m.table_name, m.search(query)]}]
-        render :json => search_response
       end
 
       private
