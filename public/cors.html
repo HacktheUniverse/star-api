@@ -3,7 +3,7 @@
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>
     <script type='text/javascript'>
         $(document).ready(function(){
-            $.getJSON("http://localhost:3000/api/v1/stars?callback=?", function(data){
+            $.getJSON("http://star-api.herokuapp.com/api/v1/stars?callback=?", function(data){
                 console.log(data);
             });
         });
