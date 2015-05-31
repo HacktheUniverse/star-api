@@ -62,6 +62,7 @@ namespace :parser do
 
     desc "Generic Parser for speck files"
     task :generic, [:file_name, :model_class] => :environment  do |task, args|
+      puts "Processing #{args.file_name}..."
       spec_uri = "/users/abbott/dudata/milkyway/specks/#{args.file_name}"
       spec_file = Tempfile.new('speck')
       Net::HTTP.start("research.amnh.org") do |http|
@@ -92,17 +93,17 @@ namespace :parser do
             end
           elsif line.split(" ").length == 3
             item = {}
-              item_tokens = line.split(" ")
-              item_tokens.each_with_index do |token, index|
-                item[metadata[:columns][index.to_i + 1]] = token
-              end
-              items.push item
+            item_tokens = line.split(" ")
+            item_tokens.each_with_index do |token, index|
+              item[metadata[:columns][index.to_i + 1]] = token
+            end
+            items.push item
           else 
             tokens = line.split("#")
             item = {}
             if tokens[1].present?
               item[:label] = tokens[1].chomp.strip
-              item[:label] = tokens[0].split(" ")
+              item_tokens = tokens[0].split(" ")
               item_tokens.each_with_index do |token, index|
                 item[metadata[:columns][index.to_i + 1]] = token
               end
@@ -110,8 +111,8 @@ namespace :parser do
             end
           end
         end
-        args.model_class.constantize.create! items
         pp items
+        args.model_class.constantize.create! items
       end
     end
   end

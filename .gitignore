@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 data
+star-api.iml
+.idea/*

@@ -4,5 +4,5 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: sqlite3
+  adapter: postgresql
   database: star_api
