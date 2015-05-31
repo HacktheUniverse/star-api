@@ -1,7 +1,8 @@
 module API
   module V1
     class API::V1::ResourcesController < ApplicationController
-      before_action :set_resource_class, except: :search
+      protect_from_forgery except: [:index, :show]
+      before_action :set_resource_class
       before_action :set_resource, only: [:show]
       respond_to :json
 
@@ -13,12 +14,11 @@ module API
           end
         end
 
-        paginate json: @items, per_page: 500
+        paginate json: @items, per_page: 500, callback: params[:callback]
       end
 
       def show
-        render :json => @item
-      end
+        render :json => @item, :callback => params[:callback]
       end
 
       private
