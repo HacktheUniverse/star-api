@@ -75,7 +75,7 @@ namespace :parser do
         columns: ["label", "x", "y", "z"]
       }
 
-      IO::readlines(spec_file).each_slice(1000) do |lines|
+      IO::readlines(spec_file).first(5000).each_slice(1000) do |lines|
         items = []
         lines.each do |line|
           if line.empty?
