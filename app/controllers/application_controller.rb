@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def home
   end
 
+  def all_stars
+    send_file Rails.root.join("app", "assets", "data", "all_stars.json.tar.gz")
+  end
+
 end
