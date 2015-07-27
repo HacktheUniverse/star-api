@@ -23,7 +23,7 @@ rake parsers:milkyway:all
 rake search:rebuild
 ```
 
-The ```rake parsers:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and stores it into Postgres.
+The ```rake parser:milkyway:all``` rake task fetches the DU data set from http://research.amnh.org/users/abbott/dudata/ and stores it into Postgres.
 
 The ```rake search:rebuild``` builds search index for all these data sets.
 
